@@ -53,7 +53,7 @@ const metrics = () => {
           up: p.pm2_env.status === 'online' ? 1 : 0,
           cpu: p.monit.cpu,
           memory: p.monit.memory,
-          uptime: Math.round((Date.now() - p.pm2_env.pm_uptime) / 1000),
+          uptime: p.pm2_env.status === 'online' ? Math.round((Date.now() - p.pm2_env.pm_uptime) / 1000) : 0,
           instances: p.pm2_env.instances || 1,
           restarts: p.pm2_env.restart_time,
           prev_restart_delay: p.pm2_env.prev_restart_delay
